@@ -1,0 +1,29 @@
+{
+  "schemaName": "user_batch_spark",
+  "dimensionFieldSpecs": [
+    {
+      "name": "userId",
+      "dataType": "STRING"
+    },
+    {
+      "name": "country",
+      "dataType": "STRING"
+    },
+    {
+      "name": "device",
+      "dataType": "STRING"
+    }
+  ],
+  "metricFieldSpecs": [
+    {
+      "name": "views",
+      "dataType": "INT"
+    }
+  ],
+  "dateTimeFieldSpecs": [{
+    "name": "timestampInEpoch",
+    "dataType": "LONG",
+    "format" : "1:MILLISECONDS:EPOCH",
+    "granularity": "1:MILLISECONDS"
+  }]
+}

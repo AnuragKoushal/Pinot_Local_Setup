@@ -1,0 +1,19 @@
+{
+    "tableName": "user_batch_spark",
+    "segmentsConfig" : {
+      "timeColumnName": "timestampInEpoch",
+      "timeType": "MILLISECONDS",
+      "replication" : "1",
+      "schemaName" : "user_batch_spark"
+    },
+    "tableIndexConfig" : {
+      "invertedIndexColumns" : [],
+      "loadMode"  : "MMAP"
+    },
+    "tenants" : {
+      "broker":"DefaultTenant",
+      "server":"DefaultTenant"
+    },
+    "tableType":"OFFLINE",
+    "metadata": {}
+  }

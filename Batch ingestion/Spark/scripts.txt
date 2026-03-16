@@ -1,0 +1,15 @@
+#Start Master
+sbin/start-master.sh
+
+#Start Slave
+sbin/start-slave.sh  spark://localhost:7077
+
+# Spart Submit command
+/home/centos/pinot/spark-2.4.7-bin-hadoop2.7/bin/spark-submit \
+  --class org.apache.pinot.tools.admin.command.LaunchDataIngestionJobCommand \
+  --master "local[2]" \
+  --deploy-mode client \
+  --conf "spark.driver.extraJavaOptions=-Dplugins.dir=/home/centos/pinot/apache-pinot/plugins -Dlog4j2.configurationFile=/home/centos/pinot/apache-pinot/conf/pinot-ingestion-job-log4j2.xml" \
+  --conf "spark.driver.extraClassPath=/home/centos/pinot/apache-pinot/lib/pinot-all-0.7.1-jar-with-dependencies.jar" \
+  local:///home/centos/pinot/apache-pinot/lib/pinot-all-0.7.1-jar-with-dependencies.jar \
+  -jobSpecFile /home/centos/pinot/apache-pinot/config/user_batch_job_spark.yml

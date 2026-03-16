@@ -1,0 +1,17 @@
+{
+    "schemaName": "user_stream_nested1",
+    "dimensionFieldSpecs": [
+      {
+        "name": "userstr",
+        "dataType": "STRING"
+      }
+    ],
+    "dateTimeFieldSpecs": [
+      {
+        "name": "last_login",
+        "dataType": "LONG",
+        "format": "1:MILLISECONDS:EPOCH",
+        "granularity": "1:MILLISECONDS"
+      }
+    ]
+  }

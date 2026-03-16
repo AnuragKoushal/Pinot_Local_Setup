@@ -1,0 +1,1 @@
+bin/pinot-admin.sh LaunchDataIngestionJob -jobSpecFile /home/centos/pinot/apache-pinot/config/user_batch_job.yml

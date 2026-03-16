@@ -1,0 +1,8 @@
+# Start kafka
+bin/kafka-server-start.sh -daemon config/server.properties
+
+# Create topic
+bin/kafka-topics.sh --zookeeper localhost:2191 --create --topic user_stream --partitions 1 --replication-factor 1
+
+# Product data into kafka topic
+cat /home/centos/pinot/kafka_2.12-2.4.0/user_data_stream.txt | bin/kafka-console-producer.sh --broker-list localhost:9092 --topic user_stream  

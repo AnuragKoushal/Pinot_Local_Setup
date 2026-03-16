@@ -1,0 +1,6 @@
+# Basic Query
+curl -H "Content-Type: application/json" -X POST -d '{"sql":"select * from user_batch limit 2"}' http://localhost:8099/query/sql | jq
+
+# Query with aggregation and transformation
+curl -H "Content-Type: application/json" -X POST -d '{"sql":"select sum(views),UPPER(country) as co from user_batch group by co"}' http://localhost:8099/query/sql | jq
+

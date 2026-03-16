@@ -1,0 +1,32 @@
+executionFrameworkSpec:
+  name: 'spark'
+  segmentGenerationJobRunnerClassName: 'org.apache.pinot.plugin.ingestion.batch.spark.SparkSegmentGenerationJobRunner'
+  segmentTarPushJobRunnerClassName: 'org.apache.pinot.plugin.ingestion.batch.spark.SparkSegmentTarPushJobRunner'
+  segmentUriPushJobRunnerClassName: 'org.apache.pinot.plugin.ingestion.batch.spark.SparkSegmentUriPushJobRunner'
+
+  extraConfigs:
+
+    # stagingDir is used in distributed filesystem to host all the segments then move this directory entirely to output directory.
+    stagingDir: /home/centos/pinot/apache-pinot/data/staging
+jobType: SegmentCreationAndTarPush
+inputDirURI: '/home/centos/pinot/apache-pinot/data/rawdata/user_batch_spark/'
+includeFileNamePattern: 'glob:**/*.csv'
+outputDirURI: '/home/centos/pinot/apache-pinot/data/segments/user_batch_spark/'
+overwriteOutput: true
+pinotFSSpecs:
+  - scheme: file
+    className: org.apache.pinot.spi.filesystem.LocalPinotFS
+recordReaderSpec:
+  dataFormat: 'csv'
+  className: 'org.apache.pinot.plugin.inputformat.csv.CSVRecordReader'
+  configClassName: 'org.apache.pinot.plugin.inputformat.csv.CSVRecordReaderConfig'
+tableSpec:
+  tableName: 'user_batch_spark'
+  schemaURI: 'http://localhost:9000/tables/user_batch_spark/schema'
+  tableConfigURI: 'http://localhost:9000/tables/user_batch_spark'
+pinotClusterSpecs:
+  - controllerURI: 'http://localhost:9000'
+pushJobSpec:
+  pushParallelism: 2
+  pushAttempts: 2
+  pushRetryIntervalMillis: 1000
